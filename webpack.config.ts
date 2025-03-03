@@ -1,6 +1,7 @@
 import path from 'path'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import webpack from 'webpack';
+import webpackDevServer from 'webpack-dev-server';
 
 const config: webpack.Configuration = {
     mode: 'development',
@@ -25,9 +26,14 @@ const config: webpack.Configuration = {
     plugins: [
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'public', 'index.html'),
-        })
+        }),
+        new webpack.ProgressPlugin()
     ],
     devtool: 'inline-source-map',
+    devServer: {
+        port: 3000,
+        open: true
+    }
 };
 
 export default config;
