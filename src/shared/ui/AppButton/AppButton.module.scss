@@ -1,0 +1,17 @@
+.AppButton {
+  background: var(--highlight-color);
+  border: none;
+  font: var(--font-m);
+  padding: var(--border-padding);
+  border-radius: var(--border-radius);
+  color: var(--primary-color);
+  transition: all 0.2s ease;
+
+  &:active {
+    transform: scale(0.9);
+  }
+
+  &:focus-visible {
+    outline: 1px solid var(--primary-color);
+  }
+}

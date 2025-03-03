@@ -10,8 +10,10 @@ interface Env {
 
 export default (env: Env) => {
     const mode = env.mode || 'development';
-    const isDev = env.mode === 'development';
+    const isDev = mode === 'development';
 
+
+    console.log(mode);
     return {
         mode: mode,
         entry: path.resolve(__dirname, 'src', 'index.tsx'),
