@@ -2,17 +2,21 @@ import {AppInput} from "shared/ui/AppInput/AppInput";
 import {AppButton} from "shared/ui/AppButton/AppButton";
 import {registerActions} from "../model/slice/registerSlice";
 import {useDispatch, useSelector} from "react-redux";
-import {getRegisterName} from "../model/selectors/getRegisterName";
-import {getRegisterUsername} from "../model/selectors/getRegisterUsername";
-import {getRegisterPassword} from "../model/selectors/getRegisterPassword";
+import {getRegisterForm} from "../model/selectors/getRegisterForm";
 import * as styles from './RegisterForm.module.scss'
+import {register} from "../model/services/register";
+import {getRegisterValidateErrors} from "../model/selectors/getRegisterValidateErrors";
+import {getRegisterServerErrors} from "../model/selectors/getRegisterServerErrors";
+import {getRegisterIsLoading} from "../model/selectors/getRegisterIsLoading";
+import {ValidateRegisterFormError} from "features/Register/model/types/RegisterState";
 
 const RegisterForm = () => {
     const dispatch = useDispatch();
 
-    const name = useSelector(getRegisterName);
-    const username = useSelector(getRegisterUsername);
-    const password = useSelector(getRegisterPassword);
+    const {name, username, password} = useSelector(getRegisterForm);
+    const validateErrors = useSelector(getRegisterValidateErrors)
+    const serverErrors = useSelector(getRegisterServerErrors)
+    const isLoading = useSelector(getRegisterIsLoading)
 
     const onChangeName = (value: string) => {
         dispatch(registerActions.setName(value))
@@ -27,15 +31,52 @@ const RegisterForm = () => {
     }
 
     const onSubmit = () => {
-        alert('Registered successfully.')
-        console.log({name, username, password})
+        // TODO: need custom type for Dispatch
+        // @ts-ignore
+        dispatch(register())
+    }
+
+    if (isLoading) {
+        return (
+            <div className={styles.RegisterForm}>
+                Loading...
+            </div>
+        )
     }
 
     return (
         <div className={styles.RegisterForm}>
-            <AppInput value={name} placeholder={'Name'} onChange={onChangeName}/>
-            <AppInput value={username} placeholder={'Username'} onChange={onChangeUsername}/>
-            <AppInput value={password} placeholder={'Password'} onChange={onChangePassword}/>
+            <div className={styles.title}>
+                Welcome to minix!
+            </div>
+            {serverErrors?.map((error, index) => (
+                <div className={styles.error} key={index}>
+                    {error}
+                </div>))
+            }
+            {validateErrors?.map((error, index) => (
+                <div className={styles.error} key={index}>
+                    {error}
+                </div>))
+            }
+            <AppInput
+                value={name}
+                placeholder={'Name'}
+                onChange={onChangeName}
+                hasError={validateErrors?.includes(ValidateRegisterFormError.INCORRECT_NAME)}
+            />
+            <AppInput
+                value={username}
+                placeholder={'Username'}
+                onChange={onChangeUsername}
+                hasError={validateErrors?.includes(ValidateRegisterFormError.INCORRECT_USERNAME)}
+            />
+            <AppInput
+                value={password}
+                placeholder={'Password'}
+                onChange={onChangePassword}
+                hasError={validateErrors?.includes(ValidateRegisterFormError.INCORRECT_PASSWORD)}
+            />
             <AppButton className={styles.button} onClick={onSubmit}>
                 Login
             </AppButton>

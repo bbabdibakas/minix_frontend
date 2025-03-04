@@ -1,10 +1,14 @@
-import {RegisterState} from "../types/RegisterState";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {RegisterState, ValidateRegisterFormError} from "../types/RegisterState";
+import {register} from "../services/register";
 
 const initialState: RegisterState = {
-    name: '',
-    username: '',
-    password: '',
+    form: {
+        name: '',
+        username: '',
+        password: '',
+    },
+    isLoading: false
 }
 
 export const registerSlice = createSlice({
@@ -12,15 +16,35 @@ export const registerSlice = createSlice({
     initialState,
     reducers: {
         setName: (state, action: PayloadAction<string>) => {
-            state.name = action.payload;
+            state.form.name = action.payload;
         },
         setUsername: (state, action: PayloadAction<string>) => {
-            state.username = action.payload;
+            state.form.username = action.payload;
         },
         setPassword: (state, action: PayloadAction<string>) => {
-            state.password = action.payload;
+            state.form.password = action.payload;
+        },
+        setValidateErrors: (state, action: PayloadAction<ValidateRegisterFormError[]>) => {
+            state.validateErrors = action.payload
         },
     },
+    extraReducers: (builder) => {
+        builder
+            .addCase(register.pending, (state) => {
+                state.serverErrors = undefined;
+                state.validateErrors = undefined;
+                state.isLoading = true
+            })
+            .addCase(register.rejected, (state, action) => {
+                state.serverErrors = action.payload;
+                state.isLoading = false
+            })
+            .addCase(register.fulfilled, (state) => {
+                state.serverErrors = undefined;
+                state.validateErrors = undefined;
+                state.isLoading = false
+            })
+    }
 });
 
 export const {actions: registerActions} = registerSlice;

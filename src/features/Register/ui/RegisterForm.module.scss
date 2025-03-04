@@ -7,6 +7,15 @@
   margin-bottom: 8px;
 }
 
+.title {
+  align-self: center;
+  font: var(--font-l);
+}
+
+.error {
+  color: var(--error-color);
+}
+
 .button {
   align-self: flex-end;
 }
