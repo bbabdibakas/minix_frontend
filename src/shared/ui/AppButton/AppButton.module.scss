@@ -1,7 +1,9 @@
 .AppButton {
   background: var(--highlight-color);
-  border: none;
+  border: 1px solid var(--highlight-color);
+  cursor: pointer;
   font: var(--font-m);
+  font-weight: bold;
   padding: var(--border-padding);
   border-radius: var(--border-radius);
   color: var(--primary-color);
@@ -13,5 +15,9 @@
 
   &:focus-visible {
     outline: 1px solid var(--primary-color);
+  }
+
+  &:disabled {
+    pointer-events: none;
   }
 }
