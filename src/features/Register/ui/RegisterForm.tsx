@@ -1,7 +1,7 @@
 import {AppInput} from "shared/ui/AppInput/AppInput";
 import {AppButton} from "shared/ui/AppButton/AppButton";
 import {registerActions} from "../model/slice/registerSlice";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {getRegisterForm} from "../model/selectors/getRegisterForm";
 import * as styles from './RegisterForm.module.scss'
 import {register} from "../model/services/register";
@@ -9,9 +9,10 @@ import {getRegisterValidateErrors} from "../model/selectors/getRegisterValidateE
 import {getRegisterServerErrors} from "../model/selectors/getRegisterServerErrors";
 import {getRegisterIsLoading} from "../model/selectors/getRegisterIsLoading";
 import {ValidateRegisterFormError} from "features/Register/model/types/RegisterState";
+import {useAppDispatch} from "shared/lib/useAppDispatch/useAppDispatch";
 
 const RegisterForm = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const {name, username, password} = useSelector(getRegisterForm);
     const validateErrors = useSelector(getRegisterValidateErrors)
@@ -30,10 +31,11 @@ const RegisterForm = () => {
         dispatch(registerActions.setPassword(value))
     }
 
-    const onSubmit = () => {
-        // TODO: need custom type for Dispatch
-        // @ts-ignore
-        dispatch(register())
+    const onSubmit = async () => {
+        const result = await dispatch(register())
+        if (result.meta.requestStatus === 'fulfilled') {
+            alert('Registered successfully.')
+        }
     }
 
     if (isLoading) {

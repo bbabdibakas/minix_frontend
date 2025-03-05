@@ -4,19 +4,10 @@ import {getRegisterForm} from "../selectors/getRegisterForm";
 import {registerActions} from "../slice/registerSlice";
 import {validateRegisterForm} from "./validateRegisterForm";
 import {ThunkConfig} from "app/providers/StoreProvider";
-
-interface UserData {
-    name: string
-    username: string
-    password: string
-    tokens: {
-        access_token: string
-        refresh_token: string
-    }
-}
+import {User, userActions} from "entities/User";
 
 export const register = createAsyncThunk<
-    UserData,
+    User,
     undefined,
     ThunkConfig<string[]>
 >(
@@ -34,10 +25,9 @@ export const register = createAsyncThunk<
         }
 
         try {
-            const response = await axios.post<UserData>('http://localhost:8000/api/registration', form)
+            const response = await axios.post<User>('http://localhost:8000/api/registration', form)
 
-            //TODO: have to set User here
-            console.log(response)
+            dispatch(userActions.setUserData(response.data))
 
             return response.data;
         } catch (e) {
