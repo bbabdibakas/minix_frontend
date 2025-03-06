@@ -4,7 +4,7 @@ import {useAppDispatch} from "shared/lib/useAppDispatch/useAppDispatch";
 import {useEffect, useState} from "react";
 import {getUserData, userActions} from "entities/User";
 import {AppButton} from "shared/ui/AppButton/AppButton";
-import {AppModal} from "shared/ui/AppModal/AppModal";
+import {LoginModal} from "features/Login";
 
 const App = () => {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -39,9 +39,9 @@ const App = () => {
                         <AppButton onClick={onModalOpen}>
                             Login
                         </AppButton>
-                        <AppModal isOpen={isModalOpen} onClose={onModalClose}>
-                            Login page
-                        </AppModal>
+                        {
+                            isModalOpen && <LoginModal isOpen={isModalOpen} onClose={onModalClose}/>
+                        }
                     </div>
                 </div>
             </div>

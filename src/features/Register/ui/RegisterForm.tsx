@@ -3,13 +3,13 @@ import {AppButton} from "shared/ui/AppButton/AppButton";
 import {registerActions} from "../model/slice/registerSlice";
 import {useSelector} from "react-redux";
 import {getRegisterForm} from "../model/selectors/getRegisterForm";
-import * as styles from './RegisterForm.module.scss'
 import {register} from "../model/services/register";
 import {getRegisterValidateErrors} from "../model/selectors/getRegisterValidateErrors";
 import {getRegisterServerErrors} from "../model/selectors/getRegisterServerErrors";
 import {getRegisterIsLoading} from "../model/selectors/getRegisterIsLoading";
-import {ValidateRegisterFormError} from "features/Register/model/types/RegisterState";
 import {useAppDispatch} from "shared/lib/useAppDispatch/useAppDispatch";
+import {ValidateRegisterFormError} from "../model/types/RegisterState";
+import * as styles from './RegisterForm.module.scss'
 
 const RegisterForm = () => {
     const dispatch = useAppDispatch();
@@ -80,7 +80,7 @@ const RegisterForm = () => {
                 hasError={validateErrors?.includes(ValidateRegisterFormError.INCORRECT_PASSWORD)}
             />
             <AppButton className={styles.button} onClick={onSubmit}>
-                Login
+                Register
             </AppButton>
         </div>
     )
