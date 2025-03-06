@@ -3,11 +3,12 @@
 
 body {
   background: var(--app-bg-color);
-  color: var(--primary-color);
-  font: var(--font-m);
 }
 
 .wrapper {
+  background: var(--app-bg-color);
+  color: var(--primary-color);
+  font: var(--font-m);
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -17,6 +18,12 @@ body {
 .container {
   width: 1046px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.form {
+  display: flex;
+  align-items: center;
 }
