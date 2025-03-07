@@ -12,8 +12,6 @@ export default (env: Env) => {
     const mode = env.mode || 'development';
     const isDev = mode === 'development';
 
-
-    console.log(mode);
     return {
         mode: mode,
         entry: path.resolve(__dirname, 'src', 'index.tsx'),
@@ -70,7 +68,8 @@ export default (env: Env) => {
         devtool: isDev ? 'inline-source-map' : undefined,
         devServer: isDev ? {
             port: 3000,
-            open: true
+            open: true,
+            historyApiFallback: true,
         } : undefined
     }
 }

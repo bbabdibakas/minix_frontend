@@ -1,6 +1,7 @@
 import {User, UserState} from "./model/types/UserState";
 import {userActions, userReducer} from "./model/slice/userSlice";
 import {getUserData} from "./model/selectors/getUserData";
+import {getUserInitialized} from "./model/selectors/getUserInitialized";
 
 export type {
     User,
@@ -10,5 +11,6 @@ export type {
 export {
     userActions,
     userReducer,
-    getUserData
+    getUserData,
+    getUserInitialized
 }

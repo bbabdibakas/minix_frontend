@@ -1,7 +1,9 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {User, UserState} from "../types/UserState";
 
-const initialState: UserState = {}
+const initialState: UserState = {
+    isInitialized: false,
+}
 
 export const userSlice = createSlice({
     name: 'user',
@@ -16,6 +18,7 @@ export const userSlice = createSlice({
             if (userData) {
                 state.userData = JSON.parse(userData);
             }
+            state.isInitialized = true;
         },
         removeUserData: (state) => {
             state.userData = undefined

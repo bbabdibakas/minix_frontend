@@ -9,10 +9,13 @@ import {getRegisterServerErrors} from "../model/selectors/getRegisterServerError
 import {getRegisterIsLoading} from "../model/selectors/getRegisterIsLoading";
 import {useAppDispatch} from "shared/lib/useAppDispatch/useAppDispatch";
 import {ValidateRegisterFormError} from "../model/types/RegisterState";
+import {routePath} from "app/providers/AppRouter";
+import {useNavigate} from "react-router";
 import * as styles from './RegisterForm.module.scss'
 
 const RegisterForm = () => {
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
     const {name, username, password} = useSelector(getRegisterForm);
     const validateErrors = useSelector(getRegisterValidateErrors)
@@ -34,7 +37,7 @@ const RegisterForm = () => {
     const onSubmit = async () => {
         const result = await dispatch(register())
         if (result.meta.requestStatus === 'fulfilled') {
-            alert('Registered successfully.')
+            await navigate(routePath.main)
         }
     }
 

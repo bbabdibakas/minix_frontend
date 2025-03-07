@@ -9,6 +9,8 @@ import {getLoginServerErrors} from "../../model/selectors/getLoginServerErrors";
 import {getLoginIsLoading} from "../../model/selectors/getLoginIsLoading";
 import {useAppDispatch} from "shared/lib/useAppDispatch/useAppDispatch";
 import {ValidateLoginFormError} from "../../model/types/LoginState";
+import {useNavigate} from "react-router";
+import {routePath} from "app/providers/AppRouter";
 import * as styles from './LoginForm.module.scss'
 
 interface LoginFormProps {
@@ -17,6 +19,7 @@ interface LoginFormProps {
 
 const LoginForm = ({onSuccess}: LoginFormProps) => {
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
     const {username, password} = useSelector(getLoginForm);
     const validateErrors = useSelector(getLoginValidateErrors)
@@ -35,6 +38,7 @@ const LoginForm = ({onSuccess}: LoginFormProps) => {
         const result = await dispatch(login())
         if (result.meta.requestStatus === 'fulfilled') {
             onSuccess()
+            await navigate(routePath.main)
         }
     }
 

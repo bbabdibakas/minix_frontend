@@ -12,4 +12,5 @@ export interface User {
 
 export interface UserState {
     userData?: User
+    isInitialized: boolean
 }
