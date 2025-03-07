@@ -5,6 +5,7 @@ import {useEffect, useState} from "react";
 import {getUserData, userActions} from "entities/User";
 import {AppButton} from "shared/ui/AppButton/AppButton";
 import {LoginModal} from "features/Login";
+import {AppRouter} from "app/providers/AppRouter";
 
 const App = () => {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -17,10 +18,6 @@ const App = () => {
 
     const onModalClose = () => {
         setIsModalOpen(false);
-    }
-
-    const onLogout = () => {
-        dispatch(userActions.removeUserData());
     }
 
     useEffect(() => {
@@ -51,10 +48,7 @@ const App = () => {
     return (
         <div className="wrapper">
             <div className="container">
-                Logged.
-                <AppButton onClick={onLogout}>
-                    Logout
-                </AppButton>
+                <AppRouter/>
             </div>
         </div>
     )
