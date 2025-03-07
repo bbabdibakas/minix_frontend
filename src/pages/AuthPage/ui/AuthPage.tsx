@@ -17,7 +17,7 @@ const AuthPage = () => {
 
     return (
         <div className="page">
-            <div className={styles.auth}>
+            <div className={styles.page}>
                 <RegisterForm/>
                 <div className={styles.form}>
                     <p>

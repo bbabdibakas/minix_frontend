@@ -18,12 +18,11 @@ body {
 .container {
   width: 1046px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.form {
-  display: flex;
-  align-items: center;
+.page {
+  height: 100%;
+  width: 100%;
 }

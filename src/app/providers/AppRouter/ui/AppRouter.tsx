@@ -5,9 +5,9 @@ import {RequireAuth} from "./RequireAuth";
 const AppRouter = () => {
     const renderWithWrapper = (route: AppRoutesProps) => {
         const element = (
-            <div>
+            <>
                 {route.element}
-            </div>
+            </>
         )
 
         return (
