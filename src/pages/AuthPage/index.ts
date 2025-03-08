@@ -1,5 +1,5 @@
-import AuthPage from "./ui/AuthPage";
+import {AuthPageAsync} from "./ui/AuthPage.async";
 
 export {
-    AuthPage
+    AuthPageAsync as AuthPage
 }
