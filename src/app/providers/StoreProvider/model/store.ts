@@ -13,7 +13,7 @@ export function createReduxStore(initialState?: RootState) {
 
     return configureStore({
         reducer: rootReducers,
-        devTools: true,
+        devTools: __IS_DEV__,
         preloadedState: initialState
     })
 }
