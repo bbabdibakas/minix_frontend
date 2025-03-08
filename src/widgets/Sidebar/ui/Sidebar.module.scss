@@ -2,9 +2,30 @@
   min-width: 200px;
   height: 100%;
   padding: 8px;
+  border-right: 1px solid var(--border-color);
 }
 
 .links {
   display: flex;
   flex-direction: column;
+}
+
+.links > *:not(:last-child) {
+  margin-bottom: 4px;
+}
+
+.link {
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  border-radius: var(--border-radius);
+  width: fit-content;
+
+  &:hover {
+    background: var(--border-color);
+  }
+}
+
+.item {
+  padding: 0 16px;
 }
