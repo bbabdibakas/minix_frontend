@@ -3,6 +3,7 @@ import {RootState, ThunkExtraArg} from "./RootState";
 import {registerReducer} from "features/Register";
 import {loginReducer} from "features/Login";
 import {userReducer} from "entities/User";
+import {profileReducer} from "entities/Profile";
 import {api} from "shared/api/api";
 
 export function createReduxStore(initialState?: RootState) {
@@ -10,6 +11,7 @@ export function createReduxStore(initialState?: RootState) {
         register: registerReducer,
         login: loginReducer,
         user: userReducer,
+        profile: profileReducer,
     }
 
     const extraArg: ThunkExtraArg = {

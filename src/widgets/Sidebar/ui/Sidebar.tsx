@@ -19,8 +19,8 @@ const Sidebar = () => {
                         Main
                     </div>
                 </AppLink>
-                <AppLink to={routePath.profile} className={styles.link}>
-                    {location.pathname === routePath.profile ? <ProfilePageActiveIcon/> : <ProfilePageIcon/>}
+                <AppLink to={routePath.profiles} className={styles.link}>
+                    {location.pathname === routePath.profiles ? <ProfilePageActiveIcon/> : <ProfilePageIcon/>}
                     <div className={styles.item}>
                         Profile
                     </div>

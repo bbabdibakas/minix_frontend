@@ -9,13 +9,13 @@ export type AppRoutesProps = RouteProps & {
 
 export enum AppRoutes {
     MAIN = 'main',
-    PROFILE = 'profile',
+    PROFILE = 'profiles',
     AUTH = 'auth',
 }
 
 export const routePath: Record<AppRoutes, string> = {
     [AppRoutes.MAIN]: '/',
-    [AppRoutes.PROFILE]: '/profile',
+    [AppRoutes.PROFILE]: '/profiles/', //:username
     [AppRoutes.AUTH]: '/auth',
 }
 
@@ -26,7 +26,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
         isRequiredAuth: true
     },
     [AppRoutes.PROFILE]: {
-        path: routePath.profile,
+        path: `${routePath.profiles}:username` ,
         element: <ProfilePage/>,
         isRequiredAuth: true
     },

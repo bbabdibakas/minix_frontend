@@ -1,0 +1,16 @@
+.ProfileCard {
+  padding: 8px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.name {
+  font-weight: bold;
+}
+
+.username {
+  color: var(--secondary-color);
+}
+
+.bio {
+  margin-top: 8px;
+}
