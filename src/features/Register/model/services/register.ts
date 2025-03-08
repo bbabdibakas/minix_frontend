@@ -1,5 +1,4 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import axios from "axios";
 import {getRegisterForm} from "../selectors/getRegisterForm";
 import {registerActions} from "../slice/registerSlice";
 import {validateRegisterForm} from "./validateRegisterForm";
@@ -14,7 +13,7 @@ export const register = createAsyncThunk<
 >(
     'auth/register',
     async (_, thunkApi) => {
-        const {rejectWithValue, dispatch, getState} = thunkApi;
+        const {extra, rejectWithValue, dispatch, getState} = thunkApi;
 
         const form = getRegisterForm(getState())
         const errors = validateRegisterForm(form)
@@ -26,7 +25,7 @@ export const register = createAsyncThunk<
         }
 
         try {
-            const response = await axios.post<User>('http://localhost:8000/api/registration', form)
+            const response = await extra.api.post<User>('/registration', form)
 
             dispatch(userActions.setUserData(response.data))
 

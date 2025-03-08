@@ -1,5 +1,4 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import axios from "axios";
 import {loginActions} from "../slice/loginSlice";
 import {validateLoginForm} from "./validateLoginForm";
 import {ThunkConfig} from "app/providers/StoreProvider";
@@ -14,7 +13,7 @@ export const login = createAsyncThunk<
 >(
     'auth/login',
     async (_, thunkApi) => {
-        const {rejectWithValue, dispatch, getState} = thunkApi;
+        const {extra, rejectWithValue, dispatch, getState} = thunkApi;
 
         const form = getLoginForm(getState())
         const errors = validateLoginForm(form)
@@ -26,7 +25,7 @@ export const login = createAsyncThunk<
         }
 
         try {
-            const response = await axios.post<User>('http://localhost:8000/api/login', form)
+            const response = await extra.api.post<User>('/login', form)
 
             dispatch(userActions.setUserData(response.data))
 
