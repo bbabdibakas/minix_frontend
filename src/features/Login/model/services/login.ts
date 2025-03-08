@@ -5,6 +5,7 @@ import {validateLoginForm} from "./validateLoginForm";
 import {ThunkConfig} from "app/providers/StoreProvider";
 import {User, userActions} from "entities/User";
 import {getLoginForm} from "../selectors/getLoginForm";
+import {handleThunkError} from "shared/api/hundleThunkError";
 
 export const login = createAsyncThunk<
     User,
@@ -31,10 +32,7 @@ export const login = createAsyncThunk<
 
             return response.data;
         } catch (e) {
-            console.error(e);
-
-            //TODO: have to handle server error here
-            return rejectWithValue(['Server Error.']);
+            return rejectWithValue(handleThunkError(e));
         }
     },
 );

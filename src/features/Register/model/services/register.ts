@@ -5,6 +5,7 @@ import {registerActions} from "../slice/registerSlice";
 import {validateRegisterForm} from "./validateRegisterForm";
 import {ThunkConfig} from "app/providers/StoreProvider";
 import {User, userActions} from "entities/User";
+import {handleThunkError} from "shared/api/hundleThunkError";
 
 export const register = createAsyncThunk<
     User,
@@ -31,10 +32,7 @@ export const register = createAsyncThunk<
 
             return response.data;
         } catch (e) {
-            console.error(e);
-
-            //TODO: have to handle server error here
-            return rejectWithValue(['Server Error.']);
+            return rejectWithValue(handleThunkError(e));
         }
     },
 );
