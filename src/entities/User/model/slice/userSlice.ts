@@ -1,6 +1,6 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {Token, User, UserState} from "../types/UserState";
-import {TOKEN_LOCALSTORAGE_KEY, USER_LOCALSTORAGE_KEY} from "shared/const/localstorage";
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {Token, User, UserState} from '../types/UserState';
+import {TOKEN_LOCALSTORAGE_KEY, USER_LOCALSTORAGE_KEY} from 'shared/const/localstorage';
 
 const initialState: UserState = {
     isInitialized: false,
@@ -22,9 +22,13 @@ export const userSlice = createSlice({
             const userData = localStorage.getItem(USER_LOCALSTORAGE_KEY)
             const tokenData = localStorage.getItem(TOKEN_LOCALSTORAGE_KEY)
             if (userData) {
+                // TODO: have to create type validator
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                 state.userData = JSON.parse(userData);
             }
             if (tokenData) {
+                // TODO: have to create type validator
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                 state.tokenData = JSON.parse(tokenData);
             }
             state.isInitialized = true;

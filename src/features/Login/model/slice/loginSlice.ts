@@ -1,6 +1,6 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {LoginState, ValidateLoginFormError} from "../types/LoginState";
-import {login} from "../services/login";
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {LoginState, ValidateLoginFormError} from '../types/LoginState';
+import {login} from '../services/login';
 
 const initialState: LoginState = {
     form: {

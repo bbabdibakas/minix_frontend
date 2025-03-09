@@ -1,10 +1,10 @@
-import {createAsyncThunk} from "@reduxjs/toolkit";
-import {getRegisterForm} from "../selectors/getRegisterForm";
-import {registerActions} from "../slice/registerSlice";
-import {validateRegisterForm} from "./validateRegisterForm";
-import {ThunkConfig} from "app/providers/StoreProvider";
-import {Token, User, userActions} from "entities/User";
-import {handleThunkError} from "shared/api/hundleThunkError";
+import {createAsyncThunk} from '@reduxjs/toolkit';
+import {getRegisterForm} from '../selectors/getRegisterForm';
+import {registerActions} from '../slice/registerSlice';
+import {validateRegisterForm} from './validateRegisterForm';
+import {ThunkConfig} from 'app/providers/StoreProvider';
+import {Token, User, userActions} from 'entities/User';
+import {handleThunkError} from 'shared/api/hundleThunkError';
 
 interface registerResponse {
     userData: User;
@@ -25,7 +25,6 @@ export const register = createAsyncThunk<
 
         if (errors.length) {
             dispatch(registerActions.setValidateErrors(errors))
-            console.log(errors)
             return rejectWithValue(['Validation error']);
         }
 

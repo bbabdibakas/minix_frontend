@@ -1,11 +1,11 @@
-import {useAppDispatch} from "shared/lib/useAppDispatch/useAppDispatch";
-import {useEffect} from "react";
-import {useSelector} from "react-redux";
-import {AppPageLoader} from "shared/ui/AppPageLoader/AppPageLoader";
-import {ProfileCard} from "widgets/ProfileCard";
-import {useParams} from "react-router";
-import {fetchProfileByUsername, getProfileData, getProfileIsLoading, getProfileServerErrors} from "entities/Profile";
-import {AppButton, AppButtonTheme} from "shared/ui/AppButton/AppButton";
+import {useAppDispatch} from 'shared/lib/useAppDispatch/useAppDispatch';
+import {useEffect} from 'react';
+import {useSelector} from 'react-redux';
+import {AppPageLoader} from 'shared/ui/AppPageLoader/AppPageLoader';
+import {ProfileCard} from 'widgets/ProfileCard';
+import {useParams} from 'react-router';
+import {fetchProfileByUsername, getProfileData, getProfileIsLoading, getProfileServerErrors} from 'entities/Profile';
+import {AppButton, AppButtonTheme} from 'shared/ui/AppButton/AppButton';
 
 const ProfilePage = () => {
     const {username} = useParams<{ username: string }>();

@@ -1,7 +1,7 @@
 import {ReactNode} from 'react';
 import {AppPortal} from 'shared/ui/AppPortal/AppPortal';
 import {AppButton} from 'shared/ui/AppButton/AppButton';
-import {classNames} from "shared/lib/classNames/classNames";
+import {classNames} from 'shared/lib/classNames/classNames';
 import * as styles from './AppModal.module.scss';
 
 interface AppModalProps {

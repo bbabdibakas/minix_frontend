@@ -1,7 +1,7 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {ProfileState} from "../types/ProfileState";
-import {fetchProfileByUsername} from "../services/fetchProfileByUsername";
-import {User} from "entities/User";
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {ProfileState} from '../types/ProfileState';
+import {fetchProfileByUsername} from '../services/fetchProfileByUsername';
+import {User} from 'entities/User';
 
 const initialState: ProfileState = {
     isLoading: false,
@@ -22,7 +22,6 @@ export const profileSlice = createSlice({
                 state.isLoading = false
             })
             .addCase(fetchProfileByUsername.fulfilled, (state, action: PayloadAction<User>) => {
-                console.log(action.payload)
                 state.serverErrors = undefined;
                 state.isLoading = false
                 state.profileData = action.payload

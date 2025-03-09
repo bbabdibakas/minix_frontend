@@ -1,5 +1,5 @@
 import {ChangeEvent, InputHTMLAttributes} from 'react';
-import {classNames} from "shared/lib/classNames/classNames";
+import {classNames} from 'shared/lib/classNames/classNames';
 import * as styles from './AppInput.module.scss';
 
 interface AppInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'> {

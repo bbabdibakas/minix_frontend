@@ -1,6 +1,6 @@
-import {AppButton} from "shared/ui/AppButton/AppButton";
-import {userActions} from "entities/User";
-import {useAppDispatch} from "shared/lib/useAppDispatch/useAppDispatch";
+import {AppButton} from 'shared/ui/AppButton/AppButton';
+import {userActions} from 'entities/User';
+import {useAppDispatch} from 'shared/lib/useAppDispatch/useAppDispatch';
 
 const MainPage = () => {
     const dispatch = useAppDispatch();

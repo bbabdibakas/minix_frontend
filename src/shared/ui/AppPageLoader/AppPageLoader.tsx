@@ -1,6 +1,6 @@
-import {AppLoader} from "shared/ui/AppLoader/AppLoader";
-import {classNames} from "shared/lib/classNames/classNames";
-import * as styles from "./AppPageLoader.module.scss";
+import {AppLoader} from 'shared/ui/AppLoader/AppLoader';
+import {classNames} from 'shared/lib/classNames/classNames';
+import * as styles from './AppPageLoader.module.scss';
 
 interface AppPageLoaderProps {
     className?: string

@@ -1,8 +1,8 @@
-import {AppRoutesProps, routeConfig} from "../lib/routeConfig";
-import {Route, Routes} from "react-router";
-import {RequireAuth} from "./RequireAuth";
-import {Suspense} from "react";
-import {AppPageLoader} from "shared/ui/AppPageLoader/AppPageLoader";
+import {AppRoutesProps, routeConfig} from '../lib/routeConfig';
+import {Route, Routes} from 'react-router';
+import {RequireAuth} from './RequireAuth';
+import {Suspense} from 'react';
+import {AppPageLoader} from 'shared/ui/AppPageLoader/AppPageLoader';
 
 const AppRouter = () => {
     const renderWithWrapper = (route: AppRoutesProps) => {

@@ -1,4 +1,4 @@
-import {RegisterForm, ValidateRegisterFormError} from "../../model/types/RegisterState";
+import {RegisterForm, ValidateRegisterFormError} from '../../model/types/RegisterState';
 
 export const validateRegisterForm = (form: RegisterForm) => {
     const {

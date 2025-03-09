@@ -1,16 +1,16 @@
-import {AppInput} from "shared/ui/AppInput/AppInput";
-import {AppButton} from "shared/ui/AppButton/AppButton";
-import {registerActions} from "../model/slice/registerSlice";
-import {useSelector} from "react-redux";
-import {getRegisterForm} from "../model/selectors/getRegisterForm";
-import {register} from "../model/services/register";
-import {getRegisterValidateErrors} from "../model/selectors/getRegisterValidateErrors";
-import {getRegisterServerErrors} from "../model/selectors/getRegisterServerErrors";
-import {getRegisterIsLoading} from "../model/selectors/getRegisterIsLoading";
-import {useAppDispatch} from "shared/lib/useAppDispatch/useAppDispatch";
-import {ValidateRegisterFormError} from "../model/types/RegisterState";
-import {routePath} from "app/providers/AppRouter";
-import {useNavigate} from "react-router";
+import {AppInput} from 'shared/ui/AppInput/AppInput';
+import {AppButton} from 'shared/ui/AppButton/AppButton';
+import {registerActions} from '../model/slice/registerSlice';
+import {useSelector} from 'react-redux';
+import {getRegisterForm} from '../model/selectors/getRegisterForm';
+import {register} from '../model/services/register';
+import {getRegisterValidateErrors} from '../model/selectors/getRegisterValidateErrors';
+import {getRegisterServerErrors} from '../model/selectors/getRegisterServerErrors';
+import {getRegisterIsLoading} from '../model/selectors/getRegisterIsLoading';
+import {useAppDispatch} from 'shared/lib/useAppDispatch/useAppDispatch';
+import {ValidateRegisterFormError} from '../model/types/RegisterState';
+import {routePath} from 'app/providers/AppRouter';
+import {useNavigate} from 'react-router';
 import * as styles from './RegisterForm.module.scss'
 
 const RegisterForm = () => {
@@ -82,6 +82,10 @@ const RegisterForm = () => {
                 onChange={onChangePassword}
                 hasError={validateErrors?.includes(ValidateRegisterFormError.INCORRECT_PASSWORD)}
             />
+            {/*
+                TODO: fix later
+             */}
+            {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
             <AppButton className={styles.button} onClick={onSubmit}>
                 Register
             </AppButton>

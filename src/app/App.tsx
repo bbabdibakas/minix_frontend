@@ -1,9 +1,9 @@
-import {useAppDispatch} from "shared/lib/useAppDispatch/useAppDispatch";
-import {useEffect} from "react";
-import {userActions, getUserInitialized, getUserData} from "entities/User";
-import {AppRouter} from "app/providers/AppRouter";
-import {useSelector} from "react-redux";
-import {Sidebar} from "../widgets/Sidebar";
+import {useAppDispatch} from 'shared/lib/useAppDispatch/useAppDispatch';
+import {useEffect} from 'react';
+import {userActions, getUserInitialized, getUserData} from 'entities/User';
+import {AppRouter} from 'app/providers/AppRouter';
+import {useSelector} from 'react-redux';
+import {Sidebar} from '../widgets/Sidebar';
 
 const App = () => {
     const dispatch = useAppDispatch();

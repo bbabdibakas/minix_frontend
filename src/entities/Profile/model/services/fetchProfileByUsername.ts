@@ -1,7 +1,7 @@
-import {createAsyncThunk} from "@reduxjs/toolkit";
-import {ThunkConfig} from "app/providers/StoreProvider";
-import {handleThunkError} from "shared/api/hundleThunkError";
-import {User} from "entities/User";
+import {createAsyncThunk} from '@reduxjs/toolkit';
+import {ThunkConfig} from 'app/providers/StoreProvider';
+import {handleThunkError} from 'shared/api/hundleThunkError';
+import {User} from 'entities/User';
 
 export const fetchProfileByUsername = createAsyncThunk<
     User,

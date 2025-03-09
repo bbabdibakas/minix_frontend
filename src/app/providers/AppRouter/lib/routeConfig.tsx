@@ -1,7 +1,7 @@
-import {RouteProps} from "react-router";
-import {MainPage} from "pages/MainPage";
-import {ProfilePage} from "pages/ProfilePage";
-import {AuthPage} from "pages/AuthPage";
+import {RouteProps} from 'react-router';
+import {MainPage} from 'pages/MainPage';
+import {ProfilePage} from 'pages/ProfilePage';
+import {AuthPage} from 'pages/AuthPage';
 
 export type AppRoutesProps = RouteProps & {
     isRequiredAuth?: boolean

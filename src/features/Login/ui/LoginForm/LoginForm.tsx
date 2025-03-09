@@ -1,16 +1,16 @@
-import {AppInput} from "shared/ui/AppInput/AppInput";
-import {AppButton} from "shared/ui/AppButton/AppButton";
-import {loginActions} from "../../model/slice/loginSlice";
-import {useSelector} from "react-redux";
-import {getLoginForm} from "../../model/selectors/getLoginForm";
-import {login} from "../../model/services/login";
-import {getLoginValidateErrors} from "../../model/selectors/getLoginValidateErrors";
-import {getLoginServerErrors} from "../../model/selectors/getLoginServerErrors";
-import {getLoginIsLoading} from "../../model/selectors/getLoginIsLoading";
-import {useAppDispatch} from "shared/lib/useAppDispatch/useAppDispatch";
-import {ValidateLoginFormError} from "../../model/types/LoginState";
-import {useNavigate} from "react-router";
-import {routePath} from "app/providers/AppRouter";
+import {AppInput} from 'shared/ui/AppInput/AppInput';
+import {AppButton} from 'shared/ui/AppButton/AppButton';
+import {loginActions} from '../../model/slice/loginSlice';
+import {useSelector} from 'react-redux';
+import {getLoginForm} from '../../model/selectors/getLoginForm';
+import {login} from '../../model/services/login';
+import {getLoginValidateErrors} from '../../model/selectors/getLoginValidateErrors';
+import {getLoginServerErrors} from '../../model/selectors/getLoginServerErrors';
+import {getLoginIsLoading} from '../../model/selectors/getLoginIsLoading';
+import {useAppDispatch} from 'shared/lib/useAppDispatch/useAppDispatch';
+import {ValidateLoginFormError} from '../../model/types/LoginState';
+import {useNavigate} from 'react-router';
+import {routePath} from 'app/providers/AppRouter';
 import * as styles from './LoginForm.module.scss'
 
 interface LoginFormProps {
@@ -77,6 +77,10 @@ const LoginForm = ({onSuccess}: LoginFormProps) => {
                 onChange={onChangePassword}
                 hasError={validateErrors?.includes(ValidateLoginFormError.INCORRECT_PASSWORD)}
             />
+            {/*
+                TODO: fix later
+             */}
+            {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
             <AppButton className={styles.button} onClick={onSubmit}>
                 Login
             </AppButton>

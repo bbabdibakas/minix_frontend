@@ -1,6 +1,6 @@
-import {Link, LinkProps} from "react-router"
-import {classNames} from "shared/lib/classNames/classNames";
-import * as styles from "./AppLink.module.scss"
+import {Link, LinkProps} from 'react-router'
+import {classNames} from 'shared/lib/classNames/classNames';
+import * as styles from './AppLink.module.scss'
 
 interface AppLinkProps extends LinkProps {
     className?: string

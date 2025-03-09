@@ -1,4 +1,4 @@
-import {LoginForm, ValidateLoginFormError} from "../types/LoginState";
+import {LoginForm, ValidateLoginFormError} from '../types/LoginState';
 
 export const validateLoginForm = (form: LoginForm) => {
     const {

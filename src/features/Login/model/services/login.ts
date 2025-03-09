@@ -1,10 +1,10 @@
-import {createAsyncThunk} from "@reduxjs/toolkit";
-import {loginActions} from "../slice/loginSlice";
-import {validateLoginForm} from "./validateLoginForm";
-import {ThunkConfig} from "app/providers/StoreProvider";
-import {Token, User, userActions} from "entities/User";
-import {getLoginForm} from "../selectors/getLoginForm";
-import {handleThunkError} from "shared/api/hundleThunkError";
+import {createAsyncThunk} from '@reduxjs/toolkit';
+import {loginActions} from '../slice/loginSlice';
+import {validateLoginForm} from './validateLoginForm';
+import {ThunkConfig} from 'app/providers/StoreProvider';
+import {Token, User, userActions} from 'entities/User';
+import {getLoginForm} from '../selectors/getLoginForm';
+import {handleThunkError} from 'shared/api/hundleThunkError';
 
 interface LoginResponse {
     userData: User;
@@ -25,13 +25,12 @@ export const login = createAsyncThunk<
 
         if (errors.length) {
             dispatch(loginActions.setValidateErrors(errors))
-            console.log(errors)
             return rejectWithValue(['Validation error']);
         }
 
         try {
             const response = await extra.api.post<LoginResponse>('/login', form)
-            console.log(response.data)
+
             dispatch(userActions.setUserData(response.data.userData))
             dispatch(userActions.setTokenData(response.data.tokenData))
 
