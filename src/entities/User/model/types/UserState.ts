@@ -4,13 +4,15 @@ export interface User {
     username: string
     bio: string
     createdAt: Date
-    tokens: {
-        access_token: string
-        refresh_token: string
-    }
+}
+
+export interface Token {
+    accessToken: string
+    refreshToken: string
 }
 
 export interface UserState {
     userData?: User
+    tokenData?: Token
     isInitialized: boolean
 }

@@ -3,11 +3,16 @@ import {getRegisterForm} from "../selectors/getRegisterForm";
 import {registerActions} from "../slice/registerSlice";
 import {validateRegisterForm} from "./validateRegisterForm";
 import {ThunkConfig} from "app/providers/StoreProvider";
-import {User, userActions} from "entities/User";
+import {Token, User, userActions} from "entities/User";
 import {handleThunkError} from "shared/api/hundleThunkError";
 
+interface registerResponse {
+    userData: User;
+    tokenData: Token;
+}
+
 export const register = createAsyncThunk<
-    User,
+    registerResponse,
     undefined,
     ThunkConfig<string[]>
 >(
@@ -25,9 +30,10 @@ export const register = createAsyncThunk<
         }
 
         try {
-            const response = await extra.api.post<User>('/registration', form)
+            const response = await extra.api.post<registerResponse>('/registration', form)
 
-            dispatch(userActions.setUserData(response.data))
+            dispatch(userActions.setUserData(response.data.userData))
+            dispatch(userActions.setTokenData(response.data.tokenData))
 
             return response.data;
         } catch (e) {

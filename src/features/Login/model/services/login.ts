@@ -2,12 +2,17 @@ import {createAsyncThunk} from "@reduxjs/toolkit";
 import {loginActions} from "../slice/loginSlice";
 import {validateLoginForm} from "./validateLoginForm";
 import {ThunkConfig} from "app/providers/StoreProvider";
-import {User, userActions} from "entities/User";
+import {Token, User, userActions} from "entities/User";
 import {getLoginForm} from "../selectors/getLoginForm";
 import {handleThunkError} from "shared/api/hundleThunkError";
 
+interface LoginResponse {
+    userData: User;
+    tokenData: Token;
+}
+
 export const login = createAsyncThunk<
-    User,
+    LoginResponse,
     undefined,
     ThunkConfig<string[]>
 >(
@@ -25,9 +30,10 @@ export const login = createAsyncThunk<
         }
 
         try {
-            const response = await extra.api.post<User>('/login', form)
-
-            dispatch(userActions.setUserData(response.data))
+            const response = await extra.api.post<LoginResponse>('/login', form)
+            console.log(response.data)
+            dispatch(userActions.setUserData(response.data.userData))
+            dispatch(userActions.setTokenData(response.data.tokenData))
 
             return response.data;
         } catch (e) {
