@@ -1,6 +1,7 @@
 import {ReactNode} from 'react';
 import {AppPortal} from 'shared/ui/AppPortal/AppPortal';
 import {AppButton} from 'shared/ui/AppButton/AppButton';
+import {classNames} from "shared/lib/classNames/classNames";
 import * as styles from './AppModal.module.scss';
 
 interface AppModalProps {
@@ -24,7 +25,7 @@ export const AppModal = (props: AppModalProps) => {
 
     return (
         <AppPortal>
-            <div className={`${styles.AppModal} ${isOpen ? styles.opened : undefined} ${className}`}>
+            <div className={classNames(styles.AppModal, {[styles.opened]: isOpen}, [className])}>
                 <div className={styles.overlay}>
                     <div className={styles.content}>
                         <div className={styles.header}>

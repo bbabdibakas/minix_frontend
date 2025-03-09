@@ -1,4 +1,5 @@
 import {Link, LinkProps} from "react-router"
+import {classNames} from "shared/lib/classNames/classNames";
 import * as styles from "./AppLink.module.scss"
 
 interface AppLinkProps extends LinkProps {
@@ -16,7 +17,7 @@ const AppLink = (props: AppLinkProps) => {
     return (
         <Link
             to={to}
-            className={`${styles.AppLink} ${className}`}
+            className={classNames(styles.AppLink, {}, [className])}
             {...otherProps}
         >
             {children}

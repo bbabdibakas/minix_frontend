@@ -5,6 +5,7 @@ import {AppPageLoader} from "shared/ui/AppPageLoader/AppPageLoader";
 import {ProfileCard} from "widgets/ProfileCard";
 import {useParams} from "react-router";
 import {fetchProfileByUsername, getProfileData, getProfileIsLoading, getProfileServerErrors} from "entities/Profile";
+import {AppButton, AppButtonTheme} from "shared/ui/AppButton/AppButton";
 
 const ProfilePage = () => {
     const {username} = useParams<{ username: string }>();
@@ -41,6 +42,9 @@ const ProfilePage = () => {
         content = (
             <div className="page">
                 <ProfileCard profileData={profileData}/>
+                <AppButton theme={AppButtonTheme.OUTLINED}>
+                    Edit Profile
+                </AppButton>
             </div>
         )
     }

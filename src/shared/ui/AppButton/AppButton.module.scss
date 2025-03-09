@@ -1,6 +1,4 @@
 .AppButton {
-  background: var(--highlight-color);
-  border: 1px solid var(--highlight-color);
   cursor: pointer;
   font: var(--font-m);
   font-weight: bold;
@@ -19,5 +17,27 @@
 
   &:disabled {
     pointer-events: none;
+  }
+}
+
+.primary {
+  background: var(--highlight-color);
+  border: 1px solid var(--highlight-color);
+
+  &:hover {
+    color: var(--secondary-color);
+    background: var(--disabled-highlight-color);
+    border-color: var(--disabled-highlight-color);
+  }
+}
+
+.outlined {
+  border: 1px solid var(--primary-color);
+  background: none;
+  border-radius: var(--border-radius);
+
+  &:hover {
+    color: var(--secondary-color);
+    border-color: var(--secondary-color);
   }
 }
