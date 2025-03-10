@@ -1,5 +1,5 @@
 import {ProfileState} from './model/types/ProfileState';
-import {profileReducer} from './model/slice/profileSlice';
+import {profileActions, profileReducer} from './model/slice/profileSlice';
 import {getProfileData} from './model/selectors/getProfileData';
 import {getProfileIsLoading} from './model/selectors/getProfileIsLoading';
 import {getProfileServerErrors} from './model/selectors/getProfileServerErrors';
@@ -10,6 +10,7 @@ export type {
 }
 
 export {
+    profileActions,
     profileReducer,
     getProfileData,
     getProfileIsLoading,

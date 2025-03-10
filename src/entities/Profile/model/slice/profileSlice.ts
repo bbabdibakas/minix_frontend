@@ -10,7 +10,11 @@ const initialState: ProfileState = {
 export const profileSlice = createSlice({
     name: 'profile',
     initialState,
-    reducers: {},
+    reducers: {
+        setProfileData: (state, action: PayloadAction<User>) => {
+            state.profileData = action.payload;
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchProfileByUsername.pending, (state) => {

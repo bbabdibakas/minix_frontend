@@ -5,6 +5,7 @@ import {loginReducer} from 'features/Login';
 import {userReducer} from 'entities/User';
 import {profileReducer} from 'entities/Profile';
 import {api} from 'shared/api/api';
+import {editProfileReducer} from 'features/EditProfile';
 
 export function createReduxStore(initialState?: RootState) {
     const rootReducers: ReducersMapObject<RootState> = {
@@ -12,6 +13,7 @@ export function createReduxStore(initialState?: RootState) {
         login: loginReducer,
         user: userReducer,
         profile: profileReducer,
+        editProfile: editProfileReducer,
     }
 
     const extraArg: ThunkExtraArg = {

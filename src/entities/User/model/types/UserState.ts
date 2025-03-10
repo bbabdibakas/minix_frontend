@@ -1,9 +1,9 @@
 export interface User {
-    id: number;
-    name: string
-    username: string
-    bio: string
-    createdAt: Date
+    id?: number;
+    name?: string
+    username?: string
+    bio?: string
+    createdAt?: Date
 }
 
 export interface Token {

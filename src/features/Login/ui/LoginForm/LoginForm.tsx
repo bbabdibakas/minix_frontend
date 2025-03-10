@@ -12,6 +12,7 @@ import {ValidateLoginFormError} from '../../model/types/LoginState';
 import {useNavigate} from 'react-router';
 import {routePath} from 'app/providers/AppRouter';
 import * as styles from './LoginForm.module.scss'
+import {AppPageLoader} from 'shared/ui/AppPageLoader/AppPageLoader';
 
 interface LoginFormProps {
     onSuccess: () => void;
@@ -45,7 +46,7 @@ const LoginForm = ({onSuccess}: LoginFormProps) => {
     if (isLoading) {
         return (
             <div className={styles.LoginForm}>
-                Loading...
+                <AppPageLoader/>
             </div>
         )
     }

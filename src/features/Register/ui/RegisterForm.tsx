@@ -12,6 +12,7 @@ import {ValidateRegisterFormError} from '../model/types/RegisterState';
 import {routePath} from 'app/providers/AppRouter';
 import {useNavigate} from 'react-router';
 import * as styles from './RegisterForm.module.scss'
+import {AppPageLoader} from 'shared/ui/AppPageLoader/AppPageLoader';
 
 const RegisterForm = () => {
     const dispatch = useAppDispatch();
@@ -44,7 +45,7 @@ const RegisterForm = () => {
     if (isLoading) {
         return (
             <div className={styles.RegisterForm}>
-                Loading...
+                <AppPageLoader/>
             </div>
         )
     }

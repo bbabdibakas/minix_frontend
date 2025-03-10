@@ -8,7 +8,7 @@ export const fetchProfileByUsername = createAsyncThunk<
     string,
     ThunkConfig<string[]>
 >(
-    'profile/fetchProfileByUsername',
+    'profile/updateProfileById',
     async (username, thunkApi) => {
         const {extra, rejectWithValue} = thunkApi;
 
